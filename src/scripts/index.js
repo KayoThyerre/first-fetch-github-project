@@ -1,9 +1,14 @@
-import { user } from "/src/scripts/services/user.js"
-import { repositories } from "/src/scripts/services/repositories.js"
+import { getUser } from "/src/scripts/services/user.js"
+import { getRepositories } from "/src/scripts/services/repositories.js"
+
+import { user } from "/src/scripts/objects/user.js"
+import { screen } from "/src/scripts/objects/screen.js"
+
 
 document.getElementById('btn-search').addEventListener('click', () => {
     const userName = document.getElementById('input-search').value
-    getUserProfile(userName)
+    if(validateEmptyInput(userName)) return
+    getUserData(userName)
 })
 
 document.getElementById('input-search').addEventListener('keyup', (e) => {
@@ -11,36 +16,31 @@ document.getElementById('input-search').addEventListener('keyup', (e) => {
     const key = e.which || e.keyCode
     const isEnterKeyPressed = key === 13
 
-    if(isEnterKeyPressed){
-        getUserProfile(userName)
+    if (isEnterKeyPressed) {
+        if(validateEmptyInput(userName)) return
+        getUserData(userName)
     }
 })
 
-function getUserProfile(userName){
-    user(userName).then(userData => {
-        let userInfo = `<div class="info">
-                            <img src="${userData.avatar_url}" alt="foto do perfil do usuário"
-                                <div class="data">
-                                    <h1>${userData.nam ?? 'Não possui nome cadastrado😢'}</h1>
-                                    <p>${userData.bio ?? 'Não possui bio cadastrada😢' }</p>
-                                </div>
-                        </div>`
-        document.querySelector('.profile-data').innerHTML = userInfo
-
-        getUserRepositories(userName)
-    })
+function validateEmptyInput(userName){
+    if(userName.length === 0){
+        alert('Preencha o campo com o nome de usuário válido do GitHub')
+        return true
+    }
 }
 
-function getUserRepositories(userName){
-    repositories(userName).then(reposData => {
-        let repositoriesItens = ""
-        reposData.forEach(repo => {
-            repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`
-        })
-        document.querySelector('.profile-data').innerHTML += `<div class="repositories section">
-                                                                <h2>Repositórios</h2>
-                                                                <ul>${repositoriesItens}</ul>
-                                                            </div>`
-    })
-}
+async function getUserData(userName) {
+    const userResponse = await getUser(userName)
 
+    if(userResponse.message === "Not Found"){
+        screen.renderNotFound()
+        return
+    }
+
+    const repositoriesResponse = await getRepositories(userName)
+
+    user.setInfo(userResponse)
+    user.setRepositories(repositoriesResponse)
+
+    screen.renderUser(user)
+}

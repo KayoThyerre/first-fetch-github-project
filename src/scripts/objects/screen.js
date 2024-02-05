@@ -34,3 +34,15 @@ const screen = {
 };
 
 export { screen };
+
+async function followers(){
+    const response = await fetch(`https://api.github.com/users/kayothyerre/followers`)
+    return await response.json()
+}
+console.log(await followers())
+
+async function following(){
+    const response = await fetch(`https://api.github.com/users/kayothyerre/following`)
+    return await response.json()
+}
+console.log(await following())

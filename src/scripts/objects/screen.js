@@ -9,8 +9,8 @@ const screen = {
                     <h1>${user.name || 'Não possui nome cadastrado😢'}</h1>
                     <p>${user.bio || 'Não possui bio cadastrada😢'}</p>
                     <div>
-                        <p>Following</p>
-                        <p>Followers</p>
+                        <p>Seguidores ${user.followers}</p>
+                        <p>Seguindo ${user.following}</p>
                     </div>
                 </div>
             </div>`;
@@ -35,14 +35,14 @@ const screen = {
 
 export { screen };
 
-async function followers(){
-    const response = await fetch(`https://api.github.com/users/kayothyerre/followers`)
-    return await response.json()
-}
-console.log(await followers())
+// async function followers(){
+//     const response = await fetch(`https://api.github.com/users/kayothyerre/followers`)
+//     return await response.json()
+// }
+// console.log(await followers())
 
-async function following(){
-    const response = await fetch(`https://api.github.com/users/kayothyerre/following`)
-    return await response.json()
-}
-console.log(await following())
+// async function following(){
+//     const response = await fetch(`https://api.github.com/users/kayothyerre/following`)
+//     return await response.json()
+// }
+// console.log(await following())

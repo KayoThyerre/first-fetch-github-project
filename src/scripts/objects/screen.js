@@ -13,6 +13,10 @@ const screen = {
                         <p>Seguindo ${user.following}</p>
                     </div>
                 </div>
+                <div class = "events">
+                    <h2 class = "event-title">Eventos</h2>
+                    <p class = "repositories">Teste de repositório </p><p event-description>Teste de evento</p>
+                </div>
             </div>`;
 
         let repositoriesItems = ''; // Inicializando como uma string vazia
@@ -34,6 +38,20 @@ const screen = {
 };
 
 export { screen };
+
+
+async function getUserRepositories(){
+    const response = await fetch(`https://api.github.com/users/kayothyerre/repos`)
+    return await response.json()
+}
+console.log(getUserRepositories())
+
+
+async function getUserEvents(){
+    const response = await fetch(`https://api.github.com/users/kayothyerre/events`)
+    return await response.json()
+}
+console.log(getUserEvents())
 
 // async function followers(){
 //     const response = await fetch(`https://api.github.com/users/kayothyerre/followers`)

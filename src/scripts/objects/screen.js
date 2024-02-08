@@ -13,9 +13,11 @@ const screen = {
                         <p>Seguindo ${user.following}</p>
                     </div>
                 </div>
-                <div class = "events">
-                    <h2 class = "event-title">Eventos</h2>
-                    <p class = "repositories">Teste de repositório </p><p event-description>Teste de evento</p>
+                <div class="event">
+                    <h2 class = "data">Eventos</h2>
+                    <div class = "event-data">
+                        <p>Teste de repositório </p><p event-description>Teste de evento</p>
+                    <div>
                 </div>
             </div>`;
 
@@ -52,15 +54,3 @@ async function getUserEvents(){
     return await response.json()
 }
 console.log(getUserEvents())
-
-// async function followers(){
-//     const response = await fetch(`https://api.github.com/users/kayothyerre/followers`)
-//     return await response.json()
-// }
-// console.log(await followers())
-
-// async function following(){
-//     const response = await fetch(`https://api.github.com/users/kayothyerre/following`)
-//     return await response.json()
-// }
-// console.log(await following())

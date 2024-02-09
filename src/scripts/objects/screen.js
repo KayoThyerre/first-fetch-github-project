@@ -1,3 +1,5 @@
+
+
 const screen = {
     userProfile: document.querySelector('.profile-data'),
 
@@ -16,7 +18,7 @@ const screen = {
                 <div class="event">
                     <h2 class = "data">Eventos</h2>
                     <div class = "event-data">
-                        <p>Teste de repositório </p><p event-description>Teste de evento</p>
+                        <p>teste</p><p event-description>Teste de evento</p>
                     <div>
                 </div>
             </div>`;
@@ -42,15 +44,23 @@ const screen = {
 export { screen };
 
 
-async function getUserRepositories(){
-    const response = await fetch(`https://api.github.com/users/kayothyerre/repos`)
-    return await response.json()
-}
-console.log(getUserRepositories())
+// async function repositories(){
+//     const response = await fetch(`https://api.github.com/users/kayothyerre/repos`)
+//     return await response.json()
+// }
+// console.log(repositories())
+
+// function getUserRepositories(){
+//     repositories().then(repositoriesData => {
+//         console.log(repositoriesData)
+//     })
+// }
+// getUserRepositories()
 
 
-async function getUserEvents(){
-    const response = await fetch(`https://api.github.com/users/kayothyerre/events`)
-    return await response.json()
-}
-console.log(getUserEvents())
+
+// async function getUserEvents(){
+//     const response = await fetch(`https://api.github.com/users/kayothyerre/events`)
+//     return await response.json()
+// }
+// console.log(getUserEvents())

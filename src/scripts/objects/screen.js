@@ -10,22 +10,26 @@ const screen = {
                 <div class="data">
                     <h1>${user.name || 'Não possui nome cadastrado😢'}</h1>
                     <p>${user.bio || 'Não possui bio cadastrada😢'}</p>
-                    <div>
-                        <p>Seguidores ${user.followers}</p>
-                        <p>Seguindo ${user.following}</p>
+                    <div class = "flw">
+                        <h2>🐱‍🏍Seguidores ${user.followers}</h2>
+                        <h2>🐱‍👤Seguindo ${user.following}</h2>
                     </div>
-                </div>
-                <div class="event">
-                    <h2 class = "data">Eventos</h2>
-                    <div class = "event-data">
-                        <p>teste</p><p event-description>Teste de evento</p>
-                    <div>
                 </div>
             </div>`;
 
-        let repositoriesItems = ''; // Inicializando como uma string vazia
+        let repositoriesItems = '';
 
-        user.repositories.forEach(repo => repositoriesItems += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`);
+        user.repositories.forEach(repo => repositoriesItems += `
+        <li>
+            <a href="${repo.html_url}" target="_blank">${repo.name}
+                <ul>
+                    <li class = "repositories-info">🍴 ${repo.forks ?? 'Sem forks'}</li>
+                    <li class = "repositories-info">⭐ ${repo.stargazers_count ?? 'Sem estrelas'}</li>
+                    <li class = "repositories-info">👀 ${repo.watchers ?? 'Sem observadores'}</li>
+                    <li class = "repositories-info">💻 ${repo.language ?? 'Sem linguagem'}</li>
+                </ul>
+            </a>
+        </li>`);
 
         if (user.repositories.length > 0) {
             this.userProfile.innerHTML += `
@@ -34,6 +38,9 @@ const screen = {
                     <ul>${repositoriesItems}</ul>
                 </div>`;
         }
+
+        
+
     },
     renderNotFound(){
         this.userProfile.innerHTML = "<h3>Usuário não encontrado</h3>"
@@ -64,3 +71,11 @@ export { screen };
 //     return await response.json()
 // }
 // console.log(getUserEvents())
+
+
+/* <div class="event">
+                    <h2 class = "data">Eventos</h2>
+                    <div class = "event-data">
+                        <p>teste</p><p event-description>Teste de evento</p>
+                    <div>
+                </div> */

@@ -121,6 +121,17 @@ main {
   line-height: 23px;
 }
 
+.container .profile-data .info .data .flw{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .profile-data .info .data .flw h2 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
 /* REPOSITORIES */
 
 .container .profile-data .repositories h2{
@@ -132,6 +143,14 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.container .profile-data .repositories ul .repositories-info {
+  background-color: #7713d4;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 2px;
+  margin: 10px 5px;
 }
 
 .container .profile-data .repositories ul li a{

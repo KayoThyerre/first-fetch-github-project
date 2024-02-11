@@ -39,6 +39,11 @@ const screen = {
                 </div>`;
         }
 
+        let eventsItens = '';
+
+        user.events.forEach(event => {
+            
+        })
         
 
     },

@@ -6,4 +6,6 @@ async function getEvents(userName) {
     return events.filter(element => element.type === 'CreateEvent' || element.type === 'PushEvent').slice(0, eventsQuantity)    
 }
 
+console.log(getEvents(userName))
+
 export { getEvents }

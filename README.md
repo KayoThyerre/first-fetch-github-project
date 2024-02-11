@@ -6,8 +6,6 @@
 
 "Projeto mundo real com Fetch e GitHub"
 
-[Instagram]()
-
 # Descrição
 
 Projeto feito como atividade de treinamento para o curos DEV Quest, como uma quest final do módulo de JavaScript avançado.

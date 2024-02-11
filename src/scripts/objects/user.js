@@ -17,10 +17,10 @@ const user = {
     },
     setRepositories(repositories){
         this.repositories = repositories
+    },
+    setEvents(events) {
+        this.events = events
     }
-    // setEvents(events) {
-    //     this.events = events
-    // }
 }
 
 export { user }

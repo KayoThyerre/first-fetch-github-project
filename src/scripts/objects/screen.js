@@ -42,10 +42,26 @@ const screen = {
         let eventsItens = '';
 
         user.events.forEach(event => {
-            
+            if (event.type === 'PushEvent') {
+                eventsItens += `
+                <li>
+                    <h3>${event.repo.name}</h3>
+                    <p> => ${event.payload.commits[0].message}</p>
+                </li>`
+            } else {
+                eventsItens += `
+                <li>
+                    <h3>${event.repo.name}</h3>
+                    <p> => Criado um ${event.payload.ref_type}</p>
+                </li>`
+            }
         })
         
-
+        this.userProfile.innerHTML += `
+        <div class = "events section">
+            <h2>Events</h2>
+            <ul>${eventsItens}</ul>
+        </div>`
     },
     renderNotFound(){
         this.userProfile.innerHTML = "<h3>Usuário não encontrado</h3>"
